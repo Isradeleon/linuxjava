@@ -16,6 +16,6 @@ public class HerenciaApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        Ejem1.main(args);
     }
 }

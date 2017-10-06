@@ -13,25 +13,30 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author solidus
  */
-public class Ejem1 extends javax.swing.JFrame {
-    int num1, num2, res;
+public final class Ejem1 extends javax.swing.JFrame {
+    int num1, num2, res, num_empleados;
     DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form Ejem1
      */
     public Ejem1() {
         initComponents();
-        this.setIcono();
+        this.setearIconos();
+        model.addColumn("NSS");
         model.addColumn("Nombre");
         model.addColumn("Apelidos");
         model.addColumn("Salario");
+        model.addColumn("Salario IVA");
+        model.addColumn("Ventas");
+        model.addColumn("Tarifa Comisión");
+        model.addColumn("Salario Tarifa Comisión");
         this.jTable1.setModel(model);
     }
     
-    public void setIcono(){
-        this.jTabbedPane1.setIconAt(0, new ImageIcon("/home/solidus/Downloads/smile.png"));
-        this.jTabbedPane1.setIconAt(1, new ImageIcon("/home/solidus/Downloads/mad.png"));
-        this.jTabbedPane1.setIconAt(2, new ImageIcon("/home/solidus/Downloads/wat.png"));
+    public void setearIconos(){
+        this.jTabbedPane1.setIconAt(0, new ImageIcon("c:/users/isra/desktop/smile.png"));
+        this.jTabbedPane1.setIconAt(1, new ImageIcon("c:/users/isra/desktop/laugh.png"));
+        this.jTabbedPane1.setIconAt(2, new ImageIcon("c:/users/isra/desktop/shame.png"));
     }
     
     /**
@@ -54,15 +59,17 @@ public class Ejem1 extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Empleados");
+        setResizable(false);
 
         jTabbedPane1.setBackground(new java.awt.Color(153, 102, 255));
 
@@ -121,7 +128,7 @@ public class Ejem1 extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addGap(18, 18, 18)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(570, Short.MAX_VALUE))
+                .addContainerGap(839, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,19 +153,6 @@ public class Ejem1 extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("OP1", jPanel1);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 788, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("OP3", jPanel3);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,7 +181,7 @@ public class Ejem1 extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jLabel4)
@@ -213,11 +207,24 @@ public class Ejem1 extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("OP2", jPanel2);
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1034, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 411, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("OP3", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1039, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,6 +235,7 @@ public class Ejem1 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -246,12 +254,31 @@ public class Ejem1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
+        /*try{*/
+            this.num_empleados=Integer.parseInt(this.jTextField3.getText());
+            this.model.setNumRows(0);
+            OperacionEmpleado.generarEmpleados(this.num_empleados);
+            for (int i = 0; i < OperacionEmpleado.EMPLEADOS.size(); i++) {
+                this.model.addRow(new Object[]{
+                   OperacionEmpleado.EMPLEADOS.get(i).getNSS(),
+                   OperacionEmpleado.EMPLEADOS.get(i).getNombre(),
+                   OperacionEmpleado.EMPLEADOS.get(i).getApellidos(),
+                   String.valueOf(OperacionEmpleado.EMPLEADOS.get(i).getSalario()),
+                   OperacionEmpleado.DEC_FORMAT.format(OperacionEmpleado.EMPLEADOS.get(i).getSalarioIva()),
+                   String.valueOf(OperacionEmpleado.EMPLEADOS.get(i).getVentas()),
+                   OperacionEmpleado.DEC_FORMAT.format(OperacionEmpleado.EMPLEADOS.get(i).getTarifasCOmision()),
+                   OperacionEmpleado.DEC_FORMAT.format(OperacionEmpleado.EMPLEADOS.get(i).getSalarioTarifaComision())
+                });
+            }
+            this.jTable1.setModel(this.model);
+        /*}catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please type integer numbers only!");
+        }*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

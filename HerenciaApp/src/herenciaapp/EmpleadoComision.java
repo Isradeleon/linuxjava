@@ -10,28 +10,29 @@ package herenciaapp;
  * @author solidus
  */
 public class EmpleadoComision extends Empleado {
-    private double ventas, tarifasComision;
+    private double tarifasComision;
+    private int ventas;
 
-    public EmpleadoComision(String NSS, String nombre, String apellidos, double salario,
-            double ventas, double tarifasComision) {
-        super(NSS, nombre, apellidos, salario);
+    public EmpleadoComision(String nombre, String apellidos, double salario,
+            int ventas, double tarifasComision) {
+        super(nombre, apellidos, salario);
         this.ventas = ventas;
-        this.tarifasComision = tarifasComision;
+        this.tarifasComision = Double.valueOf(String.valueOf(OperacionEmpleado.DEC_FORMAT.format(tarifasComision)));
     }
     
     public double getSalarioTarifaComision(){
-        return this.getSalarioIva()+this.ventas*this.tarifasComision;
+        return this.getSalarioIva()+Double.valueOf(this.ventas)*this.tarifasComision;
     }
     
     public double getSalarioIvaProducto(){
-        return this.ventas * 0.16 * this.tarifasComision + this.getSalarioIva();
+        return Double.valueOf(this.ventas) * 0.16 * this.tarifasComision + this.getSalarioIva();
     }
 
-    public double getVentas() {
+    public int getVentas() {
         return ventas;
     }
 
-    public void setVentas(double ventas) {
+    public void setVentas(int ventas) {
         this.ventas = ventas;
     }
 
